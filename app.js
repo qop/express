@@ -17,11 +17,9 @@ app.set('view engine', 'ejs');
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
-    res.redirect('/index');
-});
-app.use('/users', require('./routes/users'));
-app.use('/index', require('./routes/index'));
+app.use('/', require('./routes/routes'));
+// app.use('/users', require('./routes/users'));
+// app.use('/index', require('./routes/index'));
 
 /// not match prev routes will catch 404, and forward to error handler
 app.use(function(req, res, next) {
